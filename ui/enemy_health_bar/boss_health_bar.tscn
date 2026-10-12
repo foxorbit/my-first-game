@@ -1,0 +1,72 @@
+[gd_scene format=3 uid="uid://df5ylmemypucw"]
+
+[ext_resource type="Script" uid="uid://bmuv245vl1i5p" path="res://ui/enemy_health_bar/boss_health_bar.gd" id="1_r4o0t"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_15q6v"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jjb4j"]
+bg_color = Color(0, 1, 0, 1)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_v8htq"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_88s4v"]
+bg_color = Color(1, 1, 1, 1)
+
+[node name="BossHealthBar" type="Control" unique_id=186491423]
+z_index = 1
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_r4o0t")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=2094610282]
+
+[node name="NameLabel" type="Label" parent="CanvasLayer" unique_id=579070832]
+offset_left = 274.0
+offset_top = 50.0
+offset_right = 792.0
+offset_bottom = 182.0
+theme_override_font_sizes/font_size = 96
+text = "BOSS CUBE"
+
+[node name="HealthBar" type="ProgressBar" parent="CanvasLayer" unique_id=1068570862]
+z_index = 1
+offset_left = 250.0
+offset_top = 192.0
+offset_right = 1640.0
+offset_bottom = 226.0
+theme_override_styles/background = SubResource("StyleBoxEmpty_15q6v")
+theme_override_styles/fill = SubResource("StyleBoxFlat_jjb4j")
+value = 60.0
+show_percentage = false
+
+[node name="DamageIndicator" type="ProgressBar" parent="CanvasLayer/HealthBar" unique_id=932058664]
+z_index = -1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/background = SubResource("StyleBoxEmpty_v8htq")
+theme_override_styles/fill = SubResource("StyleBoxFlat_88s4v")
+value = 80.0
+show_percentage = false
+
+[node name="Background" type="ColorRect" parent="CanvasLayer/HealthBar" unique_id=782009212]
+z_index = -2
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -2.0
+offset_top = -2.0
+offset_right = 2.0
+offset_bottom = 2.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="IndicatorTimer" type="Timer" parent="CanvasLayer/HealthBar" unique_id=2050188734]
+one_shot = true
+
+[connection signal="timeout" from="CanvasLayer/HealthBar/IndicatorTimer" to="." method="_on_indicator_timer_timeout"]

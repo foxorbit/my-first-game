@@ -1,0 +1,282 @@
+[gd_scene format=3 uid="uid://chb1m2lighnlu"]
+
+[ext_resource type="Script" uid="uid://528lxabs3w8g" path="res://characters/enemies/patrol_cube.gd" id="1_p808s"]
+[ext_resource type="Shader" uid="uid://b8wet44dvc7ak" path="res://shaders/hit_flash.tres" id="2_2gvwp"]
+[ext_resource type="Texture2D" uid="uid://bfpg7vt2d0311" path="res://characters/enemies/assets/evil_cube.png" id="3_wh4es"]
+[ext_resource type="Script" uid="uid://p31xqgyjiy7w" path="res://characters/enemies/enemy_shader_player.gd" id="4_8pjt7"]
+[ext_resource type="Script" uid="uid://cnoubxje8g3f0" path="res://characters/enemies/assets/components/enemy_health_component.gd" id="5_2gvwp"]
+[ext_resource type="Script" uid="uid://b8540se71fmos" path="res://characters/enemies/assets/components/patrol_cube_movement.gd" id="5_8korc"]
+[ext_resource type="Script" uid="uid://ua32cottc45b" path="res://characters/enemies/patrol_cube_stats.gd" id="5_p808s"]
+[ext_resource type="Script" uid="uid://bkp2wtusss4bi" path="res://testing/patrol_cube_state.gd" id="6_8korc"]
+[ext_resource type="Script" uid="uid://olgmya2nths3" path="res://characters/enemies/assets/components/enemy_hurtbox.gd" id="8_wh4es"]
+[ext_resource type="Script" uid="uid://cbdht0v6kfa5k" path="res://characters/enemies/assets/components/enemy_hitbox.gd" id="9_a1y14"]
+[ext_resource type="PackedScene" uid="uid://ctsotfw8vqq57" path="res://ui/enemy_health_bar/enemy_health_bar.tscn" id="11_614d7"]
+[ext_resource type="AudioStream" uid="uid://cefaa7b8gfogp" path="res://sounds/hit2.ogg" id="12_1vwvq"]
+[ext_resource type="AudioStream" uid="uid://ds2uayldd2myy" path="res://sounds/jump2.ogg" id="13_0le1x"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_8b3ak"]
+resource_local_to_scene = true
+shader = ExtResource("2_2gvwp")
+shader_parameter/enabled = false
+shader_parameter/tint = Color(1, 1, 1, 1)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3r3c4"]
+size = Vector2(128, 128)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_8korc"]
+radius = 501.00897
+
+[sub_resource type="Animation" id="Animation_67hhy"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CharacterSprite:material:shader_parameter/enabled")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CharacterSprite:material:shader_parameter/tint")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_kbphr"]
+resource_name = "crit_flash"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CharacterSprite:material:shader_parameter/enabled")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CharacterSprite:material:shader_parameter/tint")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 0, 0, 1), Color(1, 0, 0, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_j6kny"]
+resource_name = "heal_flash"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CharacterSprite:material:shader_parameter/enabled")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CharacterSprite:material:shader_parameter/tint")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0, 1, 0, 1), Color(0, 1, 0, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_wvfxh"]
+resource_name = "hit_flash"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CharacterSprite:material:shader_parameter/enabled")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CharacterSprite:material:shader_parameter/tint")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_wh4es"]
+_data = {
+&"RESET": SubResource("Animation_67hhy"),
+&"crit_flash": SubResource("Animation_kbphr"),
+&"heal_flash": SubResource("Animation_j6kny"),
+&"hit_flash": SubResource("Animation_wvfxh")
+}
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_antja"]
+size = Vector2(128, 128)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_t0hw2"]
+size = Vector2(128, 128)
+
+[node name="PatrolCube" type="CharacterBody2D" unique_id=1054494443 node_paths=PackedStringArray("enemy_health_component")]
+script = ExtResource("1_p808s")
+enemy_health_component = NodePath("Components/EnemyHealthComponent")
+knockback_strength = 5
+
+[node name="CharacterSprite" type="Sprite2D" parent="." unique_id=805528802]
+unique_name_in_owner = true
+material = SubResource("ShaderMaterial_8b3ak")
+texture = ExtResource("3_wh4es")
+
+[node name="CharacterCollisionShape" type="CollisionShape2D" parent="." unique_id=1735434776]
+visible = false
+shape = SubResource("RectangleShape2D_3r3c4")
+
+[node name="RayCasts" type="Node2D" parent="." unique_id=700202568]
+
+[node name="WallDetectionRayRight" type="RayCast2D" parent="RayCasts" unique_id=297080003]
+target_position = Vector2(80, 0)
+collision_mask = 5
+
+[node name="LedgeDetectionRayRight" type="RayCast2D" parent="RayCasts" unique_id=957658258]
+position = Vector2(81, 57)
+target_position = Vector2(0, 30)
+
+[node name="WallDetectionRayLeft" type="RayCast2D" parent="RayCasts" unique_id=952989232]
+target_position = Vector2(-80, 0)
+collision_mask = 5
+
+[node name="LedgeDetectionRayLeft" type="RayCast2D" parent="RayCasts" unique_id=396001159]
+position = Vector2(-81, 57)
+target_position = Vector2(0, 30)
+
+[node name="PlayerDetector" type="Area2D" parent="." unique_id=956844603]
+visible = false
+scale = Vector2(0.525, 0.525)
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerDetector" unique_id=1671882068]
+shape = SubResource("CircleShape2D_8korc")
+
+[node name="PlayerChaseRadius" type="Area2D" parent="." unique_id=989235506]
+visible = false
+scale = Vector2(1.205, 1.205)
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerChaseRadius" unique_id=319826745]
+shape = SubResource("CircleShape2D_8korc")
+
+[node name="ShaderPlayer" type="AnimationPlayer" parent="." unique_id=540007140]
+libraries/ = SubResource("AnimationLibrary_wh4es")
+script = ExtResource("4_8pjt7")
+
+[node name="Components" type="Node" parent="." unique_id=747109236]
+
+[node name="StatsComponent" type="Node" parent="Components" unique_id=1374167179]
+script = ExtResource("5_p808s")
+
+[node name="EnemyHealthComponent" type="Node" parent="Components" unique_id=1635498846 node_paths=PackedStringArray("character")]
+script = ExtResource("5_2gvwp")
+character = NodePath("../..")
+max_health = 3
+metadata/_custom_type_script = "uid://cnoubxje8g3f0"
+
+[node name="PatrolCubeMovementComponent" type="Node" parent="Components" unique_id=182558613 node_paths=PackedStringArray("stats_component", "character")]
+script = ExtResource("5_8korc")
+stats_component = NodePath("../StatsComponent")
+character = NodePath("../..")
+metadata/_custom_type_script = "uid://b8540se71fmos"
+
+[node name="WaitTimer" type="Timer" parent="Components/PatrolCubeMovementComponent" unique_id=1823110004]
+process_callback = 0
+one_shot = true
+
+[node name="StateLabel" type="Label" parent="." unique_id=1681613843]
+visible = false
+offset_left = 94.0
+offset_top = -158.0
+offset_right = 233.0
+offset_bottom = -91.0
+theme_override_font_sizes/font_size = 48
+text = "STATE"
+script = ExtResource("6_8korc")
+
+[node name="HurtBox" type="Area2D" parent="." unique_id=1510339449 node_paths=PackedStringArray("enemy_health_component", "hurtbox")]
+visible = false
+collision_layer = 4
+collision_mask = 0
+script = ExtResource("8_wh4es")
+enemy_health_component = NodePath("../Components/EnemyHealthComponent")
+hurtbox = NodePath("HurtBoxShape")
+
+[node name="HurtBoxShape" type="CollisionShape2D" parent="HurtBox" unique_id=48755987]
+shape = SubResource("RectangleShape2D_antja")
+
+[node name="HitBox" type="Area2D" parent="." unique_id=2008835574 node_paths=PackedStringArray("hitbox")]
+visible = false
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("9_a1y14")
+hitbox = NodePath("HitBoxShape")
+
+[node name="HitBoxShape" type="CollisionShape2D" parent="HitBox" unique_id=1627455719]
+scale = Vector2(1.1, 1.1)
+shape = SubResource("RectangleShape2D_t0hw2")
+
+[node name="EnemyHealthBar" parent="." unique_id=186491423 node_paths=PackedStringArray("health_component") instance=ExtResource("11_614d7")]
+offset_left = -126.0
+offset_top = -180.0
+offset_right = -126.0
+offset_bottom = -180.0
+health_component = NodePath("../Components/EnemyHealthComponent")
+
+[node name="Sounds" type="Node2D" parent="." unique_id=449789595]
+
+[node name="Hit" type="AudioStreamPlayer2D" parent="Sounds" unique_id=795236278]
+stream = ExtResource("12_1vwvq")
+
+[node name="Jump" type="AudioStreamPlayer2D" parent="Sounds" unique_id=1041976420]
+stream = ExtResource("13_0le1x")
+
+[connection signal="body_entered" from="PlayerDetector" to="Components/PatrolCubeMovementComponent" method="_on_player_detector_body_entered"]
+[connection signal="body_exited" from="PlayerChaseRadius" to="Components/PatrolCubeMovementComponent" method="_on_player_chase_radius_body_exited"]
+[connection signal="died" from="Components/EnemyHealthComponent" to="Components/StatsComponent" method="_on_enemy_health_component_died"]
+[connection signal="health_decreased" from="Components/EnemyHealthComponent" to="ShaderPlayer" method="_on_enemy_health_component_health_decreased"]
+[connection signal="health_increased" from="Components/EnemyHealthComponent" to="ShaderPlayer" method="_on_enemy_health_component_health_increased"]
+[connection signal="change_state" from="Components/PatrolCubeMovementComponent" to="StateLabel" method="_on_patrol_cube_movement_component_change_state"]
+[connection signal="timeout" from="Components/PatrolCubeMovementComponent/WaitTimer" to="Components/PatrolCubeMovementComponent" method="_on_wait_timer_timeout"]

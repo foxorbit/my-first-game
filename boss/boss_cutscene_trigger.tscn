@@ -1,0 +1,13 @@
+[gd_scene format=3 uid="uid://b6g8em4vl7c7v"]
+
+[ext_resource type="Script" uid="uid://bmro5sdhu3fkh" path="res://boss/boss_cutscene_trigger.gd" id="1_ylb1x"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_15q6v"]
+
+[node name="BossCutsceneTrigger" type="Area2D" unique_id=1335038337]
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("1_ylb1x")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=808604831]
+shape = SubResource("RectangleShape2D_15q6v")

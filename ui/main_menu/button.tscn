@@ -1,0 +1,53 @@
+[gd_scene format=3 uid="uid://tbi6dgxd2t6w"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_15q6v"]
+bg_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 14
+corner_radius_top_right = 14
+corner_radius_bottom_right = 14
+corner_radius_bottom_left = 14
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_l0dmj"]
+bg_color = Color(0.12941177, 0.12941177, 0.12941177, 1)
+corner_radius_top_left = 14
+corner_radius_top_right = 14
+corner_radius_bottom_right = 14
+corner_radius_bottom_left = 14
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lldn2"]
+bg_color = Color(0.79607844, 0.79607844, 0.79607844, 1)
+corner_radius_top_left = 14
+corner_radius_top_right = 14
+corner_radius_bottom_right = 14
+corner_radius_bottom_left = 14
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mb0nk"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(0.1, 0.1, 0.1, 0.3)
+corner_radius_top_left = 14
+corner_radius_top_right = 14
+corner_radius_bottom_right = 14
+corner_radius_bottom_left = 14
+corner_detail = 5
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_l0dmj"]
+
+[node name="Button" type="Button" unique_id=1450518521]
+offset_right = 500.0
+offset_bottom = 125.0
+focus_mode = 0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 30
+theme_override_styles/normal = SubResource("StyleBoxFlat_15q6v")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_l0dmj")
+theme_override_styles/hover = SubResource("StyleBoxFlat_lldn2")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_mb0nk")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_l0dmj")
+action_mode = 0
+text = "TEXT"

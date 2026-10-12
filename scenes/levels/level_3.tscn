@@ -1,0 +1,259 @@
+[gd_scene format=3 uid="uid://buuflsvtrwcjx"]
+
+[ext_resource type="Script" uid="uid://bg3u882v17wt" path="res://scenes/assets/level_3.gd" id="1_fkk1g"]
+[ext_resource type="PackedScene" uid="uid://3ax7226nggmj" path="res://ui/character_select/character_select.tscn" id="1_ftfob"]
+[ext_resource type="PackedScene" uid="uid://drlodwuewjvbu" path="res://scenes/assets/collision_box.tscn" id="2_fkk1g"]
+[ext_resource type="PackedScene" uid="uid://6y0e00bxds2b" path="res://scenes/assets/spawn_point.tscn" id="3_ugcn1"]
+[ext_resource type="PackedScene" uid="uid://qj8v51bfhcah" path="res://scenes/assets/player_camera.tscn" id="4_pimnq"]
+[ext_resource type="Script" uid="uid://n3qjbbqac6xt" path="res://scenes/assets/blocking_box.gd" id="4_qi5uv"]
+[ext_resource type="Script" uid="uid://be1oc3yvbpaud" path="res://scenes/assets/door_1.gd" id="4_t4txi"]
+[ext_resource type="Script" uid="uid://bl20nfn3laoep" path="res://scenes/assets/door_2.gd" id="5_apo5x"]
+[ext_resource type="PackedScene" uid="uid://b6g8em4vl7c7v" path="res://boss/boss_cutscene_trigger.tscn" id="6_fkk1g"]
+[ext_resource type="PackedScene" uid="uid://b2i61xj6cp5ti" path="res://boss/boss_cutscene.tscn" id="7_ugcn1"]
+[ext_resource type="PackedScene" uid="uid://fn4kt4pydspv" path="res://characters/enemies/dummy_cube.tscn" id="8_ugcn1"]
+[ext_resource type="PackedScene" uid="uid://dgc2xxrbx7bja" path="res://characters/enemies/boss_cube.tscn" id="9_pimnq"]
+[ext_resource type="Shader" uid="uid://b8wet44dvc7ak" path="res://shaders/hit_flash.tres" id="10_2bnyt"]
+[ext_resource type="PackedScene" uid="uid://dkqm8q16fiokt" path="res://scenes/assets/death_trigger.tscn" id="11_n6eey"]
+[ext_resource type="PackedScene" uid="uid://dwi88w136lm7q" path="res://boss/boss_fight_trigger.tscn" id="14_apo5x"]
+[ext_resource type="PackedScene" uid="uid://bmo2warpyxgcc" path="res://sounds/sound_manager.tscn" id="17_lgrx1"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2o3ck"]
+
+[sub_resource type="Animation" id="Animation_josfm"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CollisionShape2D:disabled")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Polygon2D:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_lgrx1"]
+resource_name = "close"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Polygon2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, -17.21), Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CollisionShape2D:disabled")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_fhpes"]
+resource_name = "open"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CollisionShape2D:disabled")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Polygon2D:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, -17.21)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_vmg1d"]
+_data = {
+&"RESET": SubResource("Animation_josfm"),
+&"close": SubResource("Animation_lgrx1"),
+&"open": SubResource("Animation_fhpes")
+}
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_15q6v"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_lgrx1"]
+resource_local_to_scene = true
+shader = ExtResource("10_2bnyt")
+shader_parameter/enabled = false
+shader_parameter/tint = Color(1, 1, 1, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_fhpes"]
+resource_local_to_scene = true
+shader = ExtResource("10_2bnyt")
+shader_parameter/enabled = false
+shader_parameter/tint = Color(1, 1, 1, 1)
+
+[node name="Level3" type="Node2D" unique_id=2058454541]
+script = ExtResource("1_fkk1g")
+
+[node name="CharacterSelect" parent="." unique_id=493287857 instance=ExtResource("1_ftfob")]
+visible = false
+
+[node name="CollisionBox" parent="." unique_id=496134225 instance=ExtResource("2_fkk1g")]
+position = Vector2(9717.999, 100)
+scale = Vector2(1000, 10)
+
+[node name="CollisionBox2" parent="." unique_id=865440562 instance=ExtResource("2_fkk1g")]
+position = Vector2(9717.999, -2602.9998)
+scale = Vector2(1000, 10)
+
+[node name="CollisionBox3" parent="." unique_id=259254379 instance=ExtResource("2_fkk1g")]
+position = Vector2(1541, -1558)
+scale = Vector2(10, 100)
+
+[node name="CollisionBox4" parent="." unique_id=22206128 instance=ExtResource("2_fkk1g")]
+position = Vector2(4596, -1558)
+scale = Vector2(10, 100)
+
+[node name="CollisionBox5" parent="." unique_id=1181611164 instance=ExtResource("2_fkk1g")]
+position = Vector2(5856, -1288.0001)
+scale = Vector2(10, 148.745)
+
+[node name="Door1" type="StaticBody2D" parent="." unique_id=665103667]
+position = Vector2(1541, -287.61)
+scale = Vector2(10, 29.025)
+script = ExtResource("4_t4txi")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Door1" unique_id=1379280889]
+shape = SubResource("RectangleShape2D_2o3ck")
+
+[node name="Polygon2D" type="Polygon2D" parent="Door1" unique_id=613378696]
+color = Color(0.2617191, 0.26171917, 0.26171908, 1)
+polygon = PackedVector2Array(-10, -10, 10, -10, 10, 10, -10, 10)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Door1" unique_id=1920141111]
+libraries/ = SubResource("AnimationLibrary_vmg1d")
+
+[node name="Door2" type="StaticBody2D" parent="." unique_id=1414625217]
+position = Vector2(4596, -287.61)
+scale = Vector2(10, 29.025)
+script = ExtResource("5_apo5x")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Door2" unique_id=1123324907]
+shape = SubResource("RectangleShape2D_2o3ck")
+
+[node name="Polygon2D" type="Polygon2D" parent="Door2" unique_id=145848236]
+color = Color(0.2617191, 0.26171917, 0.26171908, 1)
+polygon = PackedVector2Array(-10, -10, 10, -10, 10, 10, -10, 10)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Door2" unique_id=328030653]
+libraries/ = SubResource("AnimationLibrary_vmg1d")
+
+[node name="BlockingBox" type="StaticBody2D" parent="." unique_id=1438354623]
+position = Vector2(755, -1217.9998)
+scale = Vector2(10, 134.775)
+script = ExtResource("4_qi5uv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BlockingBox" unique_id=323204349]
+shape = SubResource("RectangleShape2D_2o3ck")
+
+[node name="SpawnPoint" parent="." unique_id=1624334462 instance=ExtResource("3_ugcn1")]
+position = Vector2(234, -86)
+
+[node name="PlayerCamera" parent="." unique_id=744020186 instance=ExtResource("4_pimnq")]
+visible = false
+
+[node name="Goal" type="Area2D" parent="." unique_id=409925270]
+position = Vector2(5614, -85.00001)
+scale = Vector2(8.05, 8.05)
+collision_layer = 0
+collision_mask = 2
+
+[node name="GoalCollision" type="CollisionShape2D" parent="Goal" unique_id=1238550973]
+visible = false
+shape = SubResource("RectangleShape2D_15q6v")
+
+[node name="BossCutsceneTrigger" parent="." unique_id=1335038337 instance=ExtResource("6_fkk1g")]
+position = Vector2(466, -59)
+
+[node name="BossCutscene" parent="." unique_id=1881306486 node_paths=PackedStringArray("cutscene_marker") instance=ExtResource("7_ugcn1")]
+cutscene_marker = NodePath("../CutsceneMarker")
+
+[node name="CutsceneMarker" type="Marker2D" parent="." unique_id=2031978375]
+position = Vector2(2586, -66)
+
+[node name="BossCube" parent="." unique_id=1310061489 instance=ExtResource("9_pimnq")]
+position = Vector2(2586, -66)
+
+[node name="CharacterSprite" parent="BossCube" index="0" unique_id=939522657]
+material = SubResource("ShaderMaterial_lgrx1")
+
+[node name="BossHealthBar" parent="BossCube" index="7" unique_id=186491423]
+metadata/_edit_use_anchors_ = true
+
+[node name="DeathTrigger" parent="." unique_id=419308849 instance=ExtResource("11_n6eey")]
+position = Vector2(5421, 3168)
+collision_mask = 2
+
+[node name="CollisionShape2D" parent="DeathTrigger" index="0" unique_id=1934901721]
+scale = Vector2(1000, 1)
+
+[node name="BossFightTrigger" parent="." unique_id=149789507 instance=ExtResource("14_apo5x")]
+visible = false
+position = Vector2(1959, -87)
+scale = Vector2(13.98, 13.98)
+
+[node name="DummyCube" parent="." unique_id=641117753 instance=ExtResource("8_ugcn1")]
+position = Vector2(-131, -80)
+
+[node name="CharacterSprite" parent="DummyCube" index="0" unique_id=939522657]
+material = SubResource("ShaderMaterial_fhpes")
+
+[node name="SoundManager" parent="." unique_id=775852667 instance=ExtResource("17_lgrx1")]
+
+[connection signal="cube_selected" from="CharacterSelect" to="PlayerCamera" method="_on_character_select_cube_selected"]
+[connection signal="body_entered" from="Goal" to="." method="_on_goal_body_entered"]
+[connection signal="start_boss_cutscene" from="BossCutsceneTrigger" to="BossCutscene" method="_on_boss_cutscene_trigger_start_boss_cutscene"]
+[connection signal="cutscene" from="BossCutscene" to="PlayerCamera" method="_on_boss_cutscene_cutscene"]
+[connection signal="cutscene" from="BossCutscene" to="BossCube" method="_on_boss_cutscene_cutscene"]
+[connection signal="end_cutscene" from="BossCutscene" to="BlockingBox" method="_on_boss_cutscene_end_cutscene"]
+[connection signal="end_cutscene" from="BossCutscene" to="PlayerCamera" method="_on_boss_cutscene_end_cutscene"]
+[connection signal="reveal_boss_health" from="BossCutscene" to="BossCube/BossHealthBar" method="_on_boss_cutscene_reveal_boss_health"]
+[connection signal="boss_died" from="BossCube" to="Door2" method="_on_boss_cube_boss_died"]
+[connection signal="died" from="BossCube/Components/EnemyHealthComponent" to="SoundManager" method="_on_enemy_health_component_died"]
+[connection signal="start_boss_fight" from="BossFightTrigger" to="Door1" method="_on_boss_fight_trigger_start_boss_fight"]
+[connection signal="start_boss_fight" from="BossFightTrigger" to="BossCube/Components/BossStateComponent" method="_on_boss_fight_trigger_start_boss_fight"]
+[connection signal="died" from="DummyCube/Components/EnemyHealthComponent" to="SoundManager" method="_on_enemy_health_component_died"]
+
+[editable path="BossCube"]
+[editable path="BossCube/BossHealthBar"]
+[editable path="DeathTrigger"]
+[editable path="DummyCube"]

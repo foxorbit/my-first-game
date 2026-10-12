@@ -1,0 +1,150 @@
+[gd_scene format=3 uid="uid://d0qhowltgahor"]
+
+[ext_resource type="PackedScene" uid="uid://drlodwuewjvbu" path="res://scenes/assets/collision_box.tscn" id="1_nsrm0"]
+[ext_resource type="Script" uid="uid://b0h38u21r1b0x" path="res://scenes/assets/level_1.gd" id="1_oc4kc"]
+[ext_resource type="PackedScene" uid="uid://3ax7226nggmj" path="res://ui/character_select/character_select.tscn" id="1_x42e6"]
+[ext_resource type="PackedScene" uid="uid://6y0e00bxds2b" path="res://scenes/assets/spawn_point.tscn" id="2_x42e6"]
+[ext_resource type="PackedScene" uid="uid://qj8v51bfhcah" path="res://scenes/assets/player_camera.tscn" id="3_6761a"]
+[ext_resource type="PackedScene" uid="uid://fn4kt4pydspv" path="res://characters/enemies/dummy_cube.tscn" id="5_6761a"]
+[ext_resource type="PackedScene" uid="uid://chb1m2lighnlu" path="res://characters/enemies/patrol_cube.tscn" id="6_sk5k4"]
+[ext_resource type="Shader" uid="uid://b8wet44dvc7ak" path="res://shaders/hit_flash.tres" id="8_qxy0u"]
+[ext_resource type="PackedScene" uid="uid://dkqm8q16fiokt" path="res://scenes/assets/death_trigger.tscn" id="8_s8va5"]
+[ext_resource type="PackedScene" uid="uid://bmo2warpyxgcc" path="res://sounds/sound_manager.tscn" id="9_dga24"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_qxy0u"]
+resource_local_to_scene = true
+shader = ExtResource("8_qxy0u")
+shader_parameter/enabled = false
+shader_parameter/tint = Color(1, 1, 1, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_excbq"]
+resource_local_to_scene = true
+shader = ExtResource("8_qxy0u")
+shader_parameter/enabled = false
+shader_parameter/tint = Color(1, 1, 1, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_iav0o"]
+resource_local_to_scene = true
+shader = ExtResource("8_qxy0u")
+shader_parameter/enabled = false
+shader_parameter/tint = Color(1, 1, 1, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_dnkej"]
+resource_local_to_scene = true
+shader = ExtResource("8_qxy0u")
+shader_parameter/enabled = false
+shader_parameter/tint = Color(1, 1, 1, 1)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_15q6v"]
+
+[node name="Level1" type="Node2D" unique_id=2058454541]
+script = ExtResource("1_oc4kc")
+
+[node name="CharacterSelect" parent="." unique_id=493287857 instance=ExtResource("1_x42e6")]
+visible = false
+
+[node name="CollisionBox" parent="." unique_id=496134225 instance=ExtResource("1_nsrm0")]
+position = Vector2(500, 100)
+scale = Vector2(50, 10)
+
+[node name="CollisionBox2" parent="." unique_id=140921545 instance=ExtResource("1_nsrm0")]
+position = Vector2(2470, 100)
+scale = Vector2(100, 10)
+
+[node name="CollisionBox11" parent="." unique_id=1382149045 instance=ExtResource("1_nsrm0")]
+position = Vector2(4363, 100)
+scale = Vector2(50, 10)
+
+[node name="CollisionBox9" parent="." unique_id=473425455 instance=ExtResource("1_nsrm0")]
+position = Vector2(8731, 400)
+scale = Vector2(100, 10)
+
+[node name="CollisionBox5" parent="." unique_id=960838635 instance=ExtResource("1_nsrm0")]
+position = Vector2(5208, 500)
+scale = Vector2(10, 50)
+
+[node name="CollisionBox8" parent="." unique_id=1827816803 instance=ExtResource("1_nsrm0")]
+position = Vector2(7631, 800)
+scale = Vector2(10, 50)
+
+[node name="CollisionBox10" parent="." unique_id=52091606 instance=ExtResource("1_nsrm0")]
+position = Vector2(9831, 0)
+scale = Vector2(10, 50)
+
+[node name="CollisionBox6" parent="." unique_id=1693153515 instance=ExtResource("1_nsrm0")]
+position = Vector2(6421.0005, 900)
+scale = Vector2(114.375, 10)
+
+[node name="CollisionBox7" parent="." unique_id=342036688 instance=ExtResource("1_nsrm0")]
+position = Vector2(6786.001, 507)
+scale = Vector2(39.395, 3.275)
+
+[node name="CollisionBox3" parent="." unique_id=784759008 instance=ExtResource("1_nsrm0")]
+position = Vector2(4817, -86)
+rotation = -0.3926991
+scale = Vector2(50, 10)
+
+[node name="CollisionBox4" parent="." unique_id=1837335417 instance=ExtResource("1_nsrm0")]
+position = Vector2(5340.68, -269.74)
+
+[node name="SpawnPoint" parent="." unique_id=1624334462 instance=ExtResource("2_x42e6")]
+position = Vector2(612, -207)
+
+[node name="PlayerCamera" parent="." unique_id=744020186 instance=ExtResource("3_6761a")]
+visible = false
+
+[node name="DummyCube" parent="." unique_id=641117753 instance=ExtResource("5_6761a")]
+position = Vector2(864, -99)
+
+[node name="CharacterSprite" parent="DummyCube" index="0" unique_id=939522657]
+material = SubResource("ShaderMaterial_qxy0u")
+
+[node name="PatrolCube" parent="." unique_id=1054494443 instance=ExtResource("6_sk5k4")]
+position = Vector2(6707, 393)
+
+[node name="CharacterSprite" parent="PatrolCube" index="0" unique_id=805528802]
+material = SubResource("ShaderMaterial_excbq")
+
+[node name="PatrolCube2" parent="." unique_id=342042080 instance=ExtResource("6_sk5k4")]
+position = Vector2(7648, 212)
+
+[node name="CharacterSprite" parent="PatrolCube2" index="0" unique_id=805528802]
+material = SubResource("ShaderMaterial_iav0o")
+
+[node name="PatrolCube3" parent="." unique_id=1835220244 instance=ExtResource("6_sk5k4")]
+position = Vector2(1585, -75)
+
+[node name="CharacterSprite" parent="PatrolCube3" index="0" unique_id=805528802]
+material = SubResource("ShaderMaterial_dnkej")
+
+[node name="Goal" type="Area2D" parent="." unique_id=409925270]
+position = Vector2(9613, 212)
+scale = Vector2(8.05, 8.05)
+collision_layer = 0
+collision_mask = 2
+
+[node name="GoalCollision" type="CollisionShape2D" parent="Goal" unique_id=1238550973]
+shape = SubResource("RectangleShape2D_15q6v")
+
+[node name="DeathTrigger" parent="." unique_id=419308849 instance=ExtResource("8_s8va5")]
+position = Vector2(5421, 1915)
+collision_mask = 2
+
+[node name="CollisionShape2D" parent="DeathTrigger" index="0" unique_id=1934901721]
+scale = Vector2(1000, 1)
+
+[node name="SoundManager" parent="." unique_id=775852667 instance=ExtResource("9_dga24")]
+
+[connection signal="cube_selected" from="CharacterSelect" to="PlayerCamera" method="_on_character_select_cube_selected"]
+[connection signal="cube_selected" from="CharacterSelect" to="SoundManager" method="_on_character_select_cube_selected"]
+[connection signal="died" from="DummyCube/Components/EnemyHealthComponent" to="SoundManager" method="_on_enemy_health_component_died"]
+[connection signal="died" from="PatrolCube/Components/EnemyHealthComponent" to="SoundManager" method="_on_enemy_health_component_died"]
+[connection signal="died" from="PatrolCube2/Components/EnemyHealthComponent" to="SoundManager" method="_on_enemy_health_component_died"]
+[connection signal="died" from="PatrolCube3/Components/EnemyHealthComponent" to="SoundManager" method="_on_enemy_health_component_died"]
+[connection signal="body_entered" from="Goal" to="." method="_on_goal_body_entered"]
+
+[editable path="DummyCube"]
+[editable path="PatrolCube"]
+[editable path="PatrolCube2"]
+[editable path="PatrolCube3"]
+[editable path="DeathTrigger"]

@@ -1,0 +1,102 @@
+[gd_scene format=3 uid="uid://3ax7226nggmj"]
+
+[ext_resource type="Script" uid="uid://c27i3dcyucsai" path="res://ui/character_select/character_select.gd" id="1_xrmg0"]
+[ext_resource type="PackedScene" uid="uid://dhs72lwbx312g" path="res://ui/character_select/button.tscn" id="2_ohdmo"]
+[ext_resource type="Script" uid="uid://7nai8sytaco1" path="res://ui/character_select/character_select_animation.gd" id="2_qc8oi"]
+[ext_resource type="Texture2D" uid="uid://dnchpyo3a83hl" path="res://characters/players/assets/dash_cube.png" id="3_jsep5"]
+[ext_resource type="Texture2D" uid="uid://qjntgkvmv5w5" path="res://characters/players/assets/slide_cube.png" id="4_x8414"]
+[ext_resource type="Texture2D" uid="uid://dyi0y5301s2ds" path="res://characters/players/assets/stomp_cube.png" id="5_qc8oi"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qc8oi"]
+bg_color = Color(1, 1, 1, 1)
+corner_radius_top_right = 15
+corner_radius_bottom_right = 15
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2o3ck"]
+bg_color = Color(1, 1, 1, 1)
+
+[node name="CharacterSelect" type="CanvasLayer" unique_id=493287857]
+script = ExtResource("1_xrmg0")
+
+[node name="Control" type="Control" parent="." unique_id=943900430]
+layout_mode = 3
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = -20.0
+offset_right = 40.0
+offset_bottom = 20.0
+grow_vertical = 2
+script = ExtResource("2_qc8oi")
+
+[node name="Background" type="Label" parent="Control" unique_id=136292699]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = -149.0
+offset_top = -425.0
+offset_right = 873.0
+offset_bottom = 359.0
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 80
+theme_override_styles/normal = SubResource("StyleBoxFlat_qc8oi")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control" unique_id=1580807160]
+layout_mode = 0
+offset_left = 104.0
+offset_top = -231.0
+offset_right = 233.0
+offset_bottom = 70.0
+scale = Vector2(1.5, 1.5)
+theme_override_constants/separation = 104
+
+[node name="DashCubeButton" parent="Control/VBoxContainer" unique_id=1333245101 instance=ExtResource("2_ohdmo")]
+layout_mode = 2
+text = "Dash Cube"
+
+[node name="ButtonIcon" parent="Control/VBoxContainer/DashCubeButton" index="0" unique_id=451402402]
+texture = ExtResource("3_jsep5")
+
+[node name="SlideCubeButton" parent="Control/VBoxContainer" unique_id=157747990 instance=ExtResource("2_ohdmo")]
+layout_mode = 2
+text = "Slide Cube"
+
+[node name="ButtonIcon" parent="Control/VBoxContainer/SlideCubeButton" index="0" unique_id=451402402]
+texture = ExtResource("4_x8414")
+
+[node name="StompCubeButton" parent="Control/VBoxContainer" unique_id=1861080349 instance=ExtResource("2_ohdmo")]
+layout_mode = 2
+text = "Stomp Cube"
+
+[node name="ButtonIcon" parent="Control/VBoxContainer/StompCubeButton" index="0" unique_id=451402402]
+texture = ExtResource("5_qc8oi")
+
+[node name="Label" type="Label" parent="Control" unique_id=14326141]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 20.0
+offset_top = 246.0
+offset_right = 893.0
+offset_bottom = 356.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.87, 0.87)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 80
+theme_override_styles/normal = SubResource("StyleBoxFlat_2o3ck")
+text = "Choose your character"
+
+[connection signal="cube_selected" from="." to="Control" method="_on_character_select_cube_selected"]
+[connection signal="pressed" from="Control/VBoxContainer/DashCubeButton" to="." method="_on_dash_cube_button_pressed"]
+[connection signal="pressed" from="Control/VBoxContainer/SlideCubeButton" to="." method="_on_slide_cube_button_pressed"]
+[connection signal="pressed" from="Control/VBoxContainer/StompCubeButton" to="." method="_on_stomp_cube_button_pressed"]
+
+[editable path="Control/VBoxContainer/DashCubeButton"]
+[editable path="Control/VBoxContainer/SlideCubeButton"]
+[editable path="Control/VBoxContainer/StompCubeButton"]

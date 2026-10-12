@@ -1,0 +1,134 @@
+[gd_scene format=3 uid="uid://cv0wt5lik0qnt"]
+
+[ext_resource type="Script" uid="uid://cypnl6q8yysrp" path="res://ui/main_menu/main_menu.gd" id="1_mu8pm"]
+[ext_resource type="PackedScene" uid="uid://tbi6dgxd2t6w" path="res://ui/main_menu/button.tscn" id="1_uhj5c"]
+[ext_resource type="AudioStream" uid="uid://dycc2qntqc3u6" path="res://sounds/test.ogg" id="3_omy8q"]
+
+[node name="MainMenu" type="Control" unique_id=293794748]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_mu8pm")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=470529866]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.4210918, 0.4210918, 0.42109177, 1)
+
+[node name="Buttons" type="Control" parent="." unique_id=480244891]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -4.0
+offset_top = -4.0
+offset_right = 4.0
+offset_bottom = 4.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Level1" parent="Buttons" unique_id=1450518521 instance=ExtResource("1_uhj5c")]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -434.0
+offset_top = -279.0
+offset_right = -184.0
+offset_bottom = -29.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Level 1"
+
+[node name="Level2" parent="Buttons" unique_id=1612952651 instance=ExtResource("1_uhj5c")]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -124.0
+offset_top = -279.0
+offset_right = 126.0
+offset_bottom = -29.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Level 2"
+
+[node name="Level3" parent="Buttons" unique_id=854627935 instance=ExtResource("1_uhj5c")]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 186.0
+offset_top = -279.0
+offset_right = 436.0
+offset_bottom = -29.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Level 3"
+
+[node name="Options" parent="Buttons" unique_id=316238652 instance=ExtResource("1_uhj5c")]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -250.0
+offset_top = 78.0
+offset_right = 250.0
+offset_bottom = 203.0
+grow_horizontal = 2
+grow_vertical = 2
+tooltip_text = "Nothing to see here"
+disabled = true
+text = "Options"
+
+[node name="Quit" parent="Buttons" unique_id=2049675562 instance=ExtResource("1_uhj5c")]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -250.0
+offset_top = 218.0
+offset_right = 250.0
+offset_bottom = 343.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Quit"
+
+[node name="DemoCompleteLabel" type="Label" parent="." unique_id=417062552]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -440.5
+offset_top = 75.0
+offset_right = 440.5
+offset_bottom = 207.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 96
+
+[node name="GameCompleteSound" type="AudioStreamPlayer" parent="." unique_id=1943733146]
+stream = ExtResource("3_omy8q")
+
+[connection signal="pressed" from="Buttons/Level1" to="." method="_on_level_1_pressed"]
+[connection signal="pressed" from="Buttons/Level2" to="." method="_on_level_2_pressed"]
+[connection signal="pressed" from="Buttons/Level3" to="." method="_on_level_3_pressed"]
+[connection signal="pressed" from="Buttons/Quit" to="." method="_on_quit_pressed"]

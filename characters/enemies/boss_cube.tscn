@@ -1,0 +1,271 @@
+[gd_scene format=3 uid="uid://dgc2xxrbx7bja"]
+
+[ext_resource type="Script" uid="uid://cf05ra8rfu1w0" path="res://characters/enemies/boss_cube.gd" id="1_85xjl"]
+[ext_resource type="Shader" uid="uid://b8wet44dvc7ak" path="res://shaders/hit_flash.tres" id="2_4i4oq"]
+[ext_resource type="Texture2D" uid="uid://bfpg7vt2d0311" path="res://characters/enemies/assets/evil_cube.png" id="3_i063g"]
+[ext_resource type="Script" uid="uid://cnoubxje8g3f0" path="res://characters/enemies/assets/components/enemy_health_component.gd" id="4_35ura"]
+[ext_resource type="Script" uid="uid://qayr26qppw7k" path="res://characters/enemies/assets/components/boss_states_component.gd" id="5_4i4oq"]
+[ext_resource type="Script" uid="uid://p31xqgyjiy7w" path="res://characters/enemies/enemy_shader_player.gd" id="5_kgked"]
+[ext_resource type="Script" uid="uid://olgmya2nths3" path="res://characters/enemies/assets/components/enemy_hurtbox.gd" id="6_of0e0"]
+[ext_resource type="Script" uid="uid://cbdht0v6kfa5k" path="res://characters/enemies/assets/components/enemy_hitbox.gd" id="7_hjy08"]
+[ext_resource type="PackedScene" uid="uid://df5ylmemypucw" path="res://ui/enemy_health_bar/boss_health_bar.tscn" id="8_85xjl"]
+[ext_resource type="AudioStream" uid="uid://c5qc4pvdmsnuo" path="res://sounds/hit3.ogg" id="10_35ura"]
+[ext_resource type="AudioStream" uid="uid://5l8ldwjmuh2p" path="res://sounds/jump3.ogg" id="11_35ura"]
+[ext_resource type="AudioStream" uid="uid://cfiw5syh0p1ko" path="res://sounds/bossangry.ogg" id="12_kgked"]
+[ext_resource type="AudioStream" uid="uid://br5owuugg4rhj" path="res://sounds/jump4.ogg" id="13_hjy08"]
+[ext_resource type="AudioStream" uid="uid://c1uo8aw38g34x" path="res://sounds/slam.ogg" id="14_n4ngx"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_tpr6y"]
+resource_local_to_scene = true
+shader = ExtResource("2_4i4oq")
+shader_parameter/enabled = false
+shader_parameter/tint = Color(1, 1, 1, 1)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0oa3s"]
+size = Vector2(128, 128)
+
+[sub_resource type="Animation" id="Animation_67hhy"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CharacterSprite:material:shader_parameter/enabled")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CharacterSprite:material:shader_parameter/tint")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Face:text")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [">:("]
+}
+
+[sub_resource type="Animation" id="Animation_kbphr"]
+resource_name = "crit_flash"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CharacterSprite:material:shader_parameter/enabled")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CharacterSprite:material:shader_parameter/tint")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 0, 0, 1), Color(1, 0, 0, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_j6kny"]
+resource_name = "heal_flash"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CharacterSprite:material:shader_parameter/enabled")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CharacterSprite:material:shader_parameter/tint")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0, 1, 0, 1), Color(0, 1, 0, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_wvfxh"]
+resource_name = "hit_flash"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CharacterSprite:material:shader_parameter/enabled")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CharacterSprite:material:shader_parameter/tint")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Face:text")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [":O", ">:("]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_lg48f"]
+_data = {
+&"RESET": SubResource("Animation_67hhy"),
+&"crit_flash": SubResource("Animation_kbphr"),
+&"heal_flash": SubResource("Animation_j6kny"),
+&"hit_flash": SubResource("Animation_wvfxh")
+}
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lg48f"]
+size = Vector2(128, 128)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xvqck"]
+size = Vector2(128, 128)
+
+[node name="BossCube" type="CharacterBody2D" unique_id=641117753 node_paths=PackedStringArray("enemy_health_component")]
+collision_layer = 0
+script = ExtResource("1_85xjl")
+enemy_health_component = NodePath("Components/EnemyHealthComponent")
+knockback_strength = 0
+
+[node name="CharacterSprite" type="Sprite2D" parent="." unique_id=939522657]
+unique_name_in_owner = true
+material = SubResource("ShaderMaterial_tpr6y")
+texture = ExtResource("3_i063g")
+
+[node name="CharacterCollisionShape" type="CollisionShape2D" parent="." unique_id=973181724]
+shape = SubResource("RectangleShape2D_0oa3s")
+
+[node name="Components" type="Node" parent="." unique_id=1706992458]
+
+[node name="EnemyHealthComponent" type="Node" parent="Components" unique_id=1190426163 node_paths=PackedStringArray("character")]
+script = ExtResource("4_35ura")
+character = NodePath("../..")
+max_health = 3
+metadata/_custom_type_script = "uid://cnoubxje8g3f0"
+
+[node name="BossStateComponent" type="Node" parent="Components" unique_id=150359505 node_paths=PackedStringArray("character")]
+script = ExtResource("5_4i4oq")
+character = NodePath("../..")
+metadata/_custom_type_script = "uid://qayr26qppw7k"
+
+[node name="HoverTimer" type="Timer" parent="Components/BossStateComponent" unique_id=936089583]
+wait_time = 2.0
+one_shot = true
+
+[node name="StompTimer" type="Timer" parent="Components/BossStateComponent" unique_id=485760394]
+wait_time = 0.5
+one_shot = true
+
+[node name="ShaderPlayer" type="AnimationPlayer" parent="." unique_id=1745334940]
+libraries/ = SubResource("AnimationLibrary_lg48f")
+script = ExtResource("5_kgked")
+
+[node name="HurtBox" type="Area2D" parent="." unique_id=1072256966 node_paths=PackedStringArray("enemy_health_component", "hurtbox")]
+collision_layer = 4
+collision_mask = 0
+script = ExtResource("6_of0e0")
+enemy_health_component = NodePath("../Components/EnemyHealthComponent")
+hurtbox = NodePath("HurtBoxShape")
+
+[node name="HurtBoxShape" type="CollisionShape2D" parent="HurtBox" unique_id=938415695]
+shape = SubResource("RectangleShape2D_lg48f")
+
+[node name="HitBox" type="Area2D" parent="." unique_id=1105883546 node_paths=PackedStringArray("hitbox")]
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("7_hjy08")
+hitbox = NodePath("HitBoxShape")
+
+[node name="HitBoxShape" type="CollisionShape2D" parent="HitBox" unique_id=580319922]
+scale = Vector2(1.1, 1.1)
+shape = SubResource("RectangleShape2D_xvqck")
+
+[node name="Face" type="Label" parent="." unique_id=520632171]
+visible = false
+offset_left = -55.0
+offset_top = -65.0
+offset_right = 98.0
+offset_bottom = 64.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 86
+text = ">:("
+
+[node name="BossHealthBar" parent="." unique_id=186491423 node_paths=PackedStringArray("health_component") instance=ExtResource("8_85xjl")]
+health_component = NodePath("../Components/EnemyHealthComponent")
+
+[node name="Sounds" type="Node2D" parent="." unique_id=1428078474]
+
+[node name="Hit" type="AudioStreamPlayer2D" parent="Sounds" unique_id=765061443]
+stream = ExtResource("10_35ura")
+
+[node name="Jump" type="AudioStreamPlayer2D" parent="Sounds" unique_id=1509059724]
+stream = ExtResource("11_35ura")
+
+[node name="Angry" type="AudioStreamPlayer2D" parent="Sounds" unique_id=1727728368]
+stream = ExtResource("12_kgked")
+
+[node name="Jump2" type="AudioStreamPlayer2D" parent="Sounds" unique_id=2131962174]
+stream = ExtResource("13_hjy08")
+
+[node name="Slam" type="AudioStreamPlayer2D" parent="Sounds" unique_id=1871284883]
+stream = ExtResource("14_n4ngx")
+
+[connection signal="health_decreased" from="Components/EnemyHealthComponent" to="Components/BossStateComponent" method="_on_enemy_health_component_health_decreased"]
+[connection signal="health_decreased" from="Components/EnemyHealthComponent" to="ShaderPlayer" method="_on_enemy_health_component_health_decreased"]
+[connection signal="health_increased" from="Components/EnemyHealthComponent" to="ShaderPlayer" method="_on_enemy_health_component_health_increased"]
+[connection signal="timeout" from="Components/BossStateComponent/HoverTimer" to="Components/BossStateComponent" method="_on_hover_timer_timeout"]
+[connection signal="timeout" from="Components/BossStateComponent/StompTimer" to="Components/BossStateComponent" method="_on_stomp_timer_timeout"]
+
+[editable path="BossHealthBar"]

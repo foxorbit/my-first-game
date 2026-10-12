@@ -1,0 +1,21 @@
+[gd_scene format=3 uid="uid://dgakspunlv0o6"]
+
+[ext_resource type="PackedScene" uid="uid://js0k8rp7lt3c" path="res://characters/players/assets/player.tscn" id="1_bvcfi"]
+[ext_resource type="Texture2D" uid="uid://dyi0y5301s2ds" path="res://characters/players/assets/stomp_cube.png" id="2_kswmv"]
+[ext_resource type="Shader" uid="uid://b8wet44dvc7ak" path="res://shaders/hit_flash.tres" id="2_rq54m"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_rq54m"]
+resource_local_to_scene = true
+shader = ExtResource("2_rq54m")
+shader_parameter/enabled = false
+shader_parameter/tint = Color(1, 1, 1, 1)
+
+[node name="StompCube" unique_id=1282439627 instance=ExtResource("1_bvcfi")]
+
+[node name="CharacterSprite" parent="." index="0" unique_id=507323793]
+material = SubResource("ShaderMaterial_rq54m")
+texture = ExtResource("2_kswmv")
+
+[node name="StatsComponent" parent="Components" parent_id_path=PackedInt32Array(1424479438) index="1" unique_id=1661027131]
+JUMP_VELOCITY = -800.0
+can_stomp = true

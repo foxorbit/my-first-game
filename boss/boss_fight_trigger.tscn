@@ -1,0 +1,13 @@
+[gd_scene format=3 uid="uid://dwi88w136lm7q"]
+
+[ext_resource type="Script" uid="uid://ioukgi5w050v" path="res://boss/boss_fight_trigger.gd" id="1_863hb"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_15q6v"]
+
+[node name="BossFightTrigger" type="Area2D" unique_id=1335038337]
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("1_863hb")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=808604831]
+shape = SubResource("RectangleShape2D_15q6v")

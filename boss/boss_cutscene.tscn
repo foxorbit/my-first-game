@@ -1,0 +1,9 @@
+[gd_scene format=3 uid="uid://b2i61xj6cp5ti"]
+
+[ext_resource type="Script" uid="uid://c7leeepp5tnq6" path="res://boss/boss_cutscene.gd" id="1_872rb"]
+
+[node name="BossCutscene" type="Node" unique_id=1881306486]
+script = ExtResource("1_872rb")
+
+[node name="CutsceneMarker" type="Marker2D" parent="." unique_id=551416484]
+gizmo_extents = 100.0

@@ -1,0 +1,55 @@
+[gd_scene format=3 uid="uid://dhs72lwbx312g"]
+
+[ext_resource type="Texture2D" uid="uid://dyuwv1r65vlmh" path="res://icon.svg" id="1_7645d"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cy842"]
+bg_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7645d"]
+bg_color = Color(0.16206557, 0.1620656, 0.16206554, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rxxa4"]
+bg_color = Color(0.7877593, 0.78775924, 0.7877589, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[node name="Button" type="Button" unique_id=1333245101]
+offset_right = 66.0
+offset_bottom = 23.0
+scale = Vector2(1.5, 1.5)
+focus_mode = 0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 22
+theme_override_styles/normal = SubResource("StyleBoxFlat_cy842")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_7645d")
+theme_override_styles/hover = SubResource("StyleBoxFlat_rxxa4")
+action_mode = 0
+text = "BUTTON"
+
+[node name="ButtonIcon" type="TextureRect" parent="." unique_id=451402402]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -45.666668
+offset_top = -123.66666
+offset_right = 82.333336
+offset_bottom = 4.3333435
+grow_horizontal = 2
+grow_vertical = 0
+scale = Vector2(0.72, 0.72)
+texture = ExtResource("1_7645d")

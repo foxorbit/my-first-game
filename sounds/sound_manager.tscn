@@ -1,0 +1,14 @@
+[gd_scene format=3 uid="uid://bmo2warpyxgcc"]
+
+[ext_resource type="Script" uid="uid://bccb8qiysrvhq" path="res://sounds/sound_manager.gd" id="1_1mhr0"]
+[ext_resource type="AudioStream" uid="uid://ba1utba2qjswr" path="res://sounds/enemydeath.ogg" id="2_i6thb"]
+[ext_resource type="AudioStream" uid="uid://c6qh33a7unfam" path="res://sounds/playerdeath.ogg" id="3_ldqc4"]
+
+[node name="SoundManager" type="Node2D" unique_id=775852667]
+script = ExtResource("1_1mhr0")
+
+[node name="EnemyDeath" type="AudioStreamPlayer2D" parent="." unique_id=1860398360]
+stream = ExtResource("2_i6thb")
+
+[node name="PlayerDeath" type="AudioStreamPlayer2D" parent="." unique_id=968458127]
+stream = ExtResource("3_ldqc4")
