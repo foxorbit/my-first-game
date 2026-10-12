@@ -29,10 +29,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -4.0
-offset_top = -4.0
-offset_right = 4.0
-offset_bottom = 4.0
+offset_left = 2.5
+offset_top = 124.0
+offset_right = 10.5
+offset_bottom = 132.0
 grow_horizontal = 2
 grow_vertical = 2
 
@@ -113,15 +113,29 @@ grow_horizontal = 2
 grow_vertical = 2
 text = "Quit"
 
+[node name="GameTitle" type="Label" parent="." unique_id=325941086]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -434.0
+offset_top = 47.0
+offset_right = 447.0
+offset_bottom = 179.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 96
+text = "My First Game"
+horizontal_alignment = 1
+
 [node name="DemoCompleteLabel" type="Label" parent="." unique_id=417062552]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -440.5
-offset_top = 75.0
-offset_right = 440.5
-offset_bottom = 207.0
+offset_left = -434.0
+offset_top = 203.0
+offset_right = 447.0
+offset_bottom = 335.0
 grow_horizontal = 2
 theme_override_font_sizes/font_size = 96
 

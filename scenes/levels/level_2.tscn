@@ -6,25 +6,26 @@
 [ext_resource type="PackedScene" uid="uid://6y0e00bxds2b" path="res://scenes/assets/spawn_point.tscn" id="3_8qukl"]
 [ext_resource type="PackedScene" uid="uid://qj8v51bfhcah" path="res://scenes/assets/player_camera.tscn" id="4_3p04p"]
 [ext_resource type="PackedScene" uid="uid://chb1m2lighnlu" path="res://characters/enemies/patrol_cube.tscn" id="6_nt80m"]
+[ext_resource type="Texture2D" uid="uid://cgl0c7ruyrq2r" path="res://scenes/assets/goal.png" id="6_qsp8v"]
 [ext_resource type="Shader" uid="uid://b8wet44dvc7ak" path="res://shaders/hit_flash.tres" id="7_8qukl"]
 [ext_resource type="PackedScene" uid="uid://dkqm8q16fiokt" path="res://scenes/assets/death_trigger.tscn" id="7_ibugp"]
 [ext_resource type="PackedScene" uid="uid://bmo2warpyxgcc" path="res://sounds/sound_manager.tscn" id="9_3p04p"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_15q6v"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_3p04p"]
-resource_local_to_scene = true
-shader = ExtResource("7_8qukl")
-shader_parameter/enabled = false
-shader_parameter/tint = Color(1, 1, 1, 1)
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_qsp8v"]
-resource_local_to_scene = true
-shader = ExtResource("7_8qukl")
-shader_parameter/enabled = false
-shader_parameter/tint = Color(1, 1, 1, 1)
-
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_nt80m"]
+resource_local_to_scene = true
+shader = ExtResource("7_8qukl")
+shader_parameter/enabled = false
+shader_parameter/tint = Color(1, 1, 1, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_brxtv"]
+resource_local_to_scene = true
+shader = ExtResource("7_8qukl")
+shader_parameter/enabled = false
+shader_parameter/tint = Color(1, 1, 1, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_tv7cl"]
 resource_local_to_scene = true
 shader = ExtResource("7_8qukl")
 shader_parameter/enabled = false
@@ -92,23 +93,29 @@ collision_mask = 2
 [node name="GoalCollision" type="CollisionShape2D" parent="Goal" unique_id=1238550973]
 shape = SubResource("RectangleShape2D_15q6v")
 
+[node name="Goal2" type="Sprite2D" parent="Goal" unique_id=48149282]
+texture_filter = 1
+position = Vector2(-5.6266785e-05, 6.7080665)
+scale = Vector2(0.31444097, 0.31444097)
+texture = ExtResource("6_qsp8v")
+
 [node name="PatrolCube" parent="." unique_id=1054494443 instance=ExtResource("6_nt80m")]
 position = Vector2(3487, -52)
 
 [node name="CharacterSprite" parent="PatrolCube" index="0" unique_id=805528802]
-material = SubResource("ShaderMaterial_3p04p")
+material = SubResource("ShaderMaterial_nt80m")
 
 [node name="PatrolCube2" parent="." unique_id=690370165 instance=ExtResource("6_nt80m")]
 position = Vector2(5334, -55)
 
 [node name="CharacterSprite" parent="PatrolCube2" index="0" unique_id=805528802]
-material = SubResource("ShaderMaterial_qsp8v")
+material = SubResource("ShaderMaterial_brxtv")
 
 [node name="PatrolCube3" parent="." unique_id=1371714805 instance=ExtResource("6_nt80m")]
 position = Vector2(8510, 908)
 
 [node name="CharacterSprite" parent="PatrolCube3" index="0" unique_id=805528802]
-material = SubResource("ShaderMaterial_nt80m")
+material = SubResource("ShaderMaterial_tv7cl")
 
 [node name="DeathTrigger" parent="." unique_id=419308849 instance=ExtResource("7_ibugp")]
 position = Vector2(5421, 3168)

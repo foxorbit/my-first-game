@@ -11,6 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://b6g8em4vl7c7v" path="res://boss/boss_cutscene_trigger.tscn" id="6_fkk1g"]
 [ext_resource type="PackedScene" uid="uid://b2i61xj6cp5ti" path="res://boss/boss_cutscene.tscn" id="7_ugcn1"]
 [ext_resource type="PackedScene" uid="uid://fn4kt4pydspv" path="res://characters/enemies/dummy_cube.tscn" id="8_ugcn1"]
+[ext_resource type="Texture2D" uid="uid://cgl0c7ruyrq2r" path="res://scenes/assets/goal.png" id="9_lgrx1"]
 [ext_resource type="PackedScene" uid="uid://dgc2xxrbx7bja" path="res://characters/enemies/boss_cube.tscn" id="9_pimnq"]
 [ext_resource type="Shader" uid="uid://b8wet44dvc7ak" path="res://shaders/hit_flash.tres" id="10_2bnyt"]
 [ext_resource type="PackedScene" uid="uid://dkqm8q16fiokt" path="res://scenes/assets/death_trigger.tscn" id="11_n6eey"]
@@ -109,13 +110,13 @@ _data = {
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_15q6v"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_lgrx1"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_fhpes"]
 resource_local_to_scene = true
 shader = ExtResource("10_2bnyt")
 shader_parameter/enabled = false
 shader_parameter/tint = Color(1, 1, 1, 1)
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_fhpes"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_vmg1d"]
 resource_local_to_scene = true
 shader = ExtResource("10_2bnyt")
 shader_parameter/enabled = false
@@ -198,8 +199,13 @@ collision_layer = 0
 collision_mask = 2
 
 [node name="GoalCollision" type="CollisionShape2D" parent="Goal" unique_id=1238550973]
-visible = false
 shape = SubResource("RectangleShape2D_15q6v")
+
+[node name="Goal2" type="Sprite2D" parent="Goal" unique_id=546089816]
+texture_filter = 1
+position = Vector2(4.7683716e-06, 5.5900626)
+scale = Vector2(0.31444097, 0.31444097)
+texture = ExtResource("9_lgrx1")
 
 [node name="BossCutsceneTrigger" parent="." unique_id=1335038337 instance=ExtResource("6_fkk1g")]
 position = Vector2(466, -59)
@@ -214,7 +220,7 @@ position = Vector2(2586, -66)
 position = Vector2(2586, -66)
 
 [node name="CharacterSprite" parent="BossCube" index="0" unique_id=939522657]
-material = SubResource("ShaderMaterial_lgrx1")
+material = SubResource("ShaderMaterial_fhpes")
 
 [node name="BossHealthBar" parent="BossCube" index="7" unique_id=186491423]
 metadata/_edit_use_anchors_ = true
@@ -235,7 +241,7 @@ scale = Vector2(13.98, 13.98)
 position = Vector2(-131, -80)
 
 [node name="CharacterSprite" parent="DummyCube" index="0" unique_id=939522657]
-material = SubResource("ShaderMaterial_fhpes")
+material = SubResource("ShaderMaterial_vmg1d")
 
 [node name="SoundManager" parent="." unique_id=775852667 instance=ExtResource("17_lgrx1")]
 

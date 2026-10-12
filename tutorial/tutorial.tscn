@@ -1,0 +1,14 @@
+[gd_scene format=3 uid="uid://d2j7kk5n00yvs"]
+
+[node name="Tutorial" type="Node2D" unique_id=312555159]
+
+[node name="Controls" type="Label" parent="." unique_id=198067324]
+offset_right = 40.0
+offset_bottom = 23.0
+theme_override_font_sizes/font_size = 32
+text = "Controls:
+A / Left Arrow                          Go left
+D / Right Arrow                       Go right
+W /  Up Arrow / Space           Jump
+S / Down Arrow / Control    \"Crouch\". Not really used
+Escape                                       Pause"

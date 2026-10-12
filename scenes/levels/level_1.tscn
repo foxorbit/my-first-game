@@ -10,26 +10,31 @@
 [ext_resource type="Shader" uid="uid://b8wet44dvc7ak" path="res://shaders/hit_flash.tres" id="8_qxy0u"]
 [ext_resource type="PackedScene" uid="uid://dkqm8q16fiokt" path="res://scenes/assets/death_trigger.tscn" id="8_s8va5"]
 [ext_resource type="PackedScene" uid="uid://bmo2warpyxgcc" path="res://sounds/sound_manager.tscn" id="9_dga24"]
+[ext_resource type="Texture2D" uid="uid://cgl0c7ruyrq2r" path="res://scenes/assets/goal.png" id="9_wtwp4"]
+[ext_resource type="PackedScene" uid="uid://d2j7kk5n00yvs" path="res://tutorial/tutorial.tscn" id="11_excbq"]
+[ext_resource type="PackedScene" uid="uid://x41pwjkjhfu5" path="res://tutorial/tutorial_2.tscn" id="12_iav0o"]
+[ext_resource type="PackedScene" uid="uid://b7a0l86kkh280" path="res://tutorial/tutorial_3.tscn" id="13_dnkej"]
+[ext_resource type="PackedScene" uid="uid://cfmciymj2yq6d" path="res://tutorial/tutorial_4.tscn" id="14_mm8aj"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_qxy0u"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_wtwp4"]
 resource_local_to_scene = true
 shader = ExtResource("8_qxy0u")
 shader_parameter/enabled = false
 shader_parameter/tint = Color(1, 1, 1, 1)
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_excbq"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_iwr0g"]
 resource_local_to_scene = true
 shader = ExtResource("8_qxy0u")
 shader_parameter/enabled = false
 shader_parameter/tint = Color(1, 1, 1, 1)
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_iav0o"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_bahl2"]
 resource_local_to_scene = true
 shader = ExtResource("8_qxy0u")
 shader_parameter/enabled = false
 shader_parameter/tint = Color(1, 1, 1, 1)
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_dnkej"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_np2pn"]
 resource_local_to_scene = true
 shader = ExtResource("8_qxy0u")
 shader_parameter/enabled = false
@@ -44,8 +49,8 @@ script = ExtResource("1_oc4kc")
 visible = false
 
 [node name="CollisionBox" parent="." unique_id=496134225 instance=ExtResource("1_nsrm0")]
-position = Vector2(500, 100)
-scale = Vector2(50, 10)
+position = Vector2(41.99994, 100)
+scale = Vector2(100, 10)
 
 [node name="CollisionBox2" parent="." unique_id=140921545 instance=ExtResource("1_nsrm0")]
 position = Vector2(2470, 100)
@@ -88,34 +93,34 @@ scale = Vector2(50, 10)
 position = Vector2(5340.68, -269.74)
 
 [node name="SpawnPoint" parent="." unique_id=1624334462 instance=ExtResource("2_x42e6")]
-position = Vector2(612, -207)
+position = Vector2(-873, -94)
 
 [node name="PlayerCamera" parent="." unique_id=744020186 instance=ExtResource("3_6761a")]
-visible = false
+position = Vector2(-873, 0)
 
 [node name="DummyCube" parent="." unique_id=641117753 instance=ExtResource("5_6761a")]
 position = Vector2(864, -99)
 
 [node name="CharacterSprite" parent="DummyCube" index="0" unique_id=939522657]
-material = SubResource("ShaderMaterial_qxy0u")
+material = SubResource("ShaderMaterial_wtwp4")
 
 [node name="PatrolCube" parent="." unique_id=1054494443 instance=ExtResource("6_sk5k4")]
 position = Vector2(6707, 393)
 
 [node name="CharacterSprite" parent="PatrolCube" index="0" unique_id=805528802]
-material = SubResource("ShaderMaterial_excbq")
+material = SubResource("ShaderMaterial_iwr0g")
 
 [node name="PatrolCube2" parent="." unique_id=342042080 instance=ExtResource("6_sk5k4")]
 position = Vector2(7648, 212)
 
 [node name="CharacterSprite" parent="PatrolCube2" index="0" unique_id=805528802]
-material = SubResource("ShaderMaterial_iav0o")
+material = SubResource("ShaderMaterial_bahl2")
 
 [node name="PatrolCube3" parent="." unique_id=1835220244 instance=ExtResource("6_sk5k4")]
 position = Vector2(1585, -75)
 
 [node name="CharacterSprite" parent="PatrolCube3" index="0" unique_id=805528802]
-material = SubResource("ShaderMaterial_dnkej")
+material = SubResource("ShaderMaterial_np2pn")
 
 [node name="Goal" type="Area2D" parent="." unique_id=409925270]
 position = Vector2(9613, 212)
@@ -124,7 +129,14 @@ collision_layer = 0
 collision_mask = 2
 
 [node name="GoalCollision" type="CollisionShape2D" parent="Goal" unique_id=1238550973]
+position = Vector2(-12.919253, 0)
 shape = SubResource("RectangleShape2D_15q6v")
+
+[node name="Goal2" type="Sprite2D" parent="Goal" unique_id=1720340172]
+texture_filter = 1
+position = Vector2(-12.919312, 5.9627323)
+scale = Vector2(0.31444097, 0.31444097)
+texture = ExtResource("9_wtwp4")
 
 [node name="DeathTrigger" parent="." unique_id=419308849 instance=ExtResource("8_s8va5")]
 position = Vector2(5421, 1915)
@@ -134,6 +146,18 @@ collision_mask = 2
 scale = Vector2(1000, 1)
 
 [node name="SoundManager" parent="." unique_id=775852667 instance=ExtResource("9_dga24")]
+
+[node name="Tutorial" parent="." unique_id=312555159 instance=ExtResource("11_excbq")]
+position = Vector2(-761, -351)
+
+[node name="Tutorial2" parent="." unique_id=1981872497 instance=ExtResource("12_iav0o")]
+position = Vector2(329, -425)
+
+[node name="Tutorial3" parent="." unique_id=1466948227 instance=ExtResource("13_dnkej")]
+position = Vector2(1159, 15)
+
+[node name="Tutorial4" parent="." unique_id=311422238 instance=ExtResource("14_mm8aj")]
+position = Vector2(9339, -9)
 
 [connection signal="cube_selected" from="CharacterSelect" to="PlayerCamera" method="_on_character_select_cube_selected"]
 [connection signal="cube_selected" from="CharacterSelect" to="SoundManager" method="_on_character_select_cube_selected"]

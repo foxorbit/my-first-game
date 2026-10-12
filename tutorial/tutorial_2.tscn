@@ -1,0 +1,67 @@
+[gd_scene format=3 uid="uid://x41pwjkjhfu5"]
+
+[ext_resource type="Texture2D" uid="uid://dnchpyo3a83hl" path="res://characters/players/assets/dash_cube.png" id="1_ndjpr"]
+[ext_resource type="Texture2D" uid="uid://qjntgkvmv5w5" path="res://characters/players/assets/slide_cube.png" id="2_kytdj"]
+[ext_resource type="Texture2D" uid="uid://dyi0y5301s2ds" path="res://characters/players/assets/stomp_cube.png" id="3_x20oh"]
+
+[node name="Tutorial2" type="Node2D" unique_id=312555159]
+
+[node name="Attacks" type="Label" parent="." unique_id=198067324]
+offset_right = 40.0
+offset_bottom = 23.0
+theme_override_font_sizes/font_size = 32
+text = "Attack with Shift"
+
+[node name="DashText" type="Label" parent="Attacks" unique_id=1359436074]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 73.0
+offset_top = 40.5
+offset_right = 792.0
+offset_bottom = 87.5
+grow_vertical = 2
+theme_override_font_sizes/font_size = 34
+text = "Dash in movement direction while in the air"
+
+[node name="SlideText" type="Label" parent="Attacks" unique_id=2009720820]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 73.0
+offset_top = 101.5
+offset_right = 827.0
+offset_bottom = 146.5
+grow_vertical = 2
+theme_override_font_sizes/font_size = 32
+text = "Slide in movement direction while on the ground"
+
+[node name="StompText" type="Label" parent="Attacks" unique_id=1539295853]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 73.0
+offset_top = 161.49998
+offset_right = 433.0
+offset_bottom = 206.49998
+grow_vertical = 2
+theme_override_font_sizes/font_size = 32
+text = "Stomp while in the air"
+
+[node name="Dash" type="Sprite2D" parent="Attacks" unique_id=1592619135]
+position = Vector2(37, 86)
+scale = Vector2(0.390625, 0.390625)
+texture = ExtResource("1_ndjpr")
+
+[node name="Slide" type="Sprite2D" parent="Attacks" unique_id=1276384980]
+position = Vector2(37, 146)
+scale = Vector2(0.390625, 0.390625)
+texture = ExtResource("2_kytdj")
+
+[node name="Stomp" type="Sprite2D" parent="Attacks" unique_id=683994750]
+position = Vector2(37, 205.99998)
+scale = Vector2(0.390625, 0.390625)
+texture = ExtResource("3_x20oh")
