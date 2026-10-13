@@ -1,0 +1,13 @@
+[gd_scene format=3 uid="uid://dj73iht4twpbe"]
+
+[node name="Tutorial5" type="Node2D" unique_id=312555159]
+
+[node name="WallClimb" type="Label" parent="." unique_id=198067324]
+offset_right = 40.0
+offset_bottom = 23.0
+theme_override_font_sizes/font_size = 32
+text = "You can wall slide by moving
+into walls while falling
+
+If you jump while wall sliding
+you will do a wall jump"

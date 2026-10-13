@@ -15,12 +15,7 @@
 [ext_resource type="PackedScene" uid="uid://x41pwjkjhfu5" path="res://tutorial/tutorial_2.tscn" id="12_iav0o"]
 [ext_resource type="PackedScene" uid="uid://b7a0l86kkh280" path="res://tutorial/tutorial_3.tscn" id="13_dnkej"]
 [ext_resource type="PackedScene" uid="uid://cfmciymj2yq6d" path="res://tutorial/tutorial_4.tscn" id="14_mm8aj"]
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_wtwp4"]
-resource_local_to_scene = true
-shader = ExtResource("8_qxy0u")
-shader_parameter/enabled = false
-shader_parameter/tint = Color(1, 1, 1, 1)
+[ext_resource type="PackedScene" uid="uid://dj73iht4twpbe" path="res://tutorial/tutorial_5.tscn" id="16_iwr0g"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_iwr0g"]
 resource_local_to_scene = true
@@ -40,6 +35,12 @@ shader = ExtResource("8_qxy0u")
 shader_parameter/enabled = false
 shader_parameter/tint = Color(1, 1, 1, 1)
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_v6ha0"]
+resource_local_to_scene = true
+shader = ExtResource("8_qxy0u")
+shader_parameter/enabled = false
+shader_parameter/tint = Color(1, 1, 1, 1)
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_15q6v"]
 
 [node name="Level1" type="Node2D" unique_id=2058454541]
@@ -49,8 +50,8 @@ script = ExtResource("1_oc4kc")
 visible = false
 
 [node name="CollisionBox" parent="." unique_id=496134225 instance=ExtResource("1_nsrm0")]
-position = Vector2(41.99994, 100)
-scale = Vector2(100, 10)
+position = Vector2(-462.87, 100)
+scale = Vector2(150, 10)
 
 [node name="CollisionBox2" parent="." unique_id=140921545 instance=ExtResource("1_nsrm0")]
 position = Vector2(2470, 100)
@@ -93,34 +94,37 @@ scale = Vector2(50, 10)
 position = Vector2(5340.68, -269.74)
 
 [node name="SpawnPoint" parent="." unique_id=1624334462 instance=ExtResource("2_x42e6")]
-position = Vector2(-873, -94)
+position = Vector2(-1885, -94)
 
 [node name="PlayerCamera" parent="." unique_id=744020186 instance=ExtResource("3_6761a")]
-position = Vector2(-873, 0)
+position = Vector2(-1885, 0)
 
 [node name="DummyCube" parent="." unique_id=641117753 instance=ExtResource("5_6761a")]
-position = Vector2(864, -99)
+position = Vector2(851, -99)
 
 [node name="CharacterSprite" parent="DummyCube" index="0" unique_id=939522657]
-material = SubResource("ShaderMaterial_wtwp4")
+material = SubResource("ShaderMaterial_iwr0g")
+
+[node name="EnemyHealthBar" parent="DummyCube" index="6" unique_id=186491423]
+metadata/_edit_use_anchors_ = true
 
 [node name="PatrolCube" parent="." unique_id=1054494443 instance=ExtResource("6_sk5k4")]
 position = Vector2(6707, 393)
 
 [node name="CharacterSprite" parent="PatrolCube" index="0" unique_id=805528802]
-material = SubResource("ShaderMaterial_iwr0g")
+material = SubResource("ShaderMaterial_bahl2")
 
 [node name="PatrolCube2" parent="." unique_id=342042080 instance=ExtResource("6_sk5k4")]
 position = Vector2(7648, 212)
 
 [node name="CharacterSprite" parent="PatrolCube2" index="0" unique_id=805528802]
-material = SubResource("ShaderMaterial_bahl2")
+material = SubResource("ShaderMaterial_np2pn")
 
 [node name="PatrolCube3" parent="." unique_id=1835220244 instance=ExtResource("6_sk5k4")]
 position = Vector2(1585, -75)
 
 [node name="CharacterSprite" parent="PatrolCube3" index="0" unique_id=805528802]
-material = SubResource("ShaderMaterial_np2pn")
+material = SubResource("ShaderMaterial_v6ha0")
 
 [node name="Goal" type="Area2D" parent="." unique_id=409925270]
 position = Vector2(9613, 212)
@@ -148,16 +152,23 @@ scale = Vector2(1000, 1)
 [node name="SoundManager" parent="." unique_id=775852667 instance=ExtResource("9_dga24")]
 
 [node name="Tutorial" parent="." unique_id=312555159 instance=ExtResource("11_excbq")]
-position = Vector2(-761, -351)
+position = Vector2(-1773, -351)
 
 [node name="Tutorial2" parent="." unique_id=1981872497 instance=ExtResource("12_iav0o")]
-position = Vector2(329, -425)
+position = Vector2(316, -425)
 
 [node name="Tutorial3" parent="." unique_id=1466948227 instance=ExtResource("13_dnkej")]
 position = Vector2(1159, 15)
 
 [node name="Tutorial4" parent="." unique_id=311422238 instance=ExtResource("14_mm8aj")]
 position = Vector2(9339, -9)
+
+[node name="CollisionBox12" parent="." unique_id=806687962 instance=ExtResource("1_nsrm0")]
+position = Vector2(-236, -179)
+scale = Vector2(10, 28.785)
+
+[node name="Tutorial5" parent="." unique_id=68653860 instance=ExtResource("16_iwr0g")]
+position = Vector2(-790, -343)
 
 [connection signal="cube_selected" from="CharacterSelect" to="PlayerCamera" method="_on_character_select_cube_selected"]
 [connection signal="cube_selected" from="CharacterSelect" to="SoundManager" method="_on_character_select_cube_selected"]

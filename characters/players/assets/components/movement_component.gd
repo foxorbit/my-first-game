@@ -15,6 +15,9 @@ signal change_state(current_state)
 @onready var slide_timer: Timer = %SlideTimer
 @onready var jump_buffer_timer: Timer = %JumpBufferTimer
 @onready var jump: AudioStreamPlayer2D = $"../../Sounds/Jump"
+@onready var dash: AudioStreamPlayer2D = $"../../Sounds/Dash"
+@onready var slide: AudioStreamPlayer2D = $"../../Sounds/Slide"
+@onready var stomp: AudioStreamPlayer2D = $"../../Sounds/Stomp"
 
 enum STATE {
 	FLOOR,
@@ -182,12 +185,15 @@ func switch_state(to_state: STATE) -> void:
 			character.velocity.y = stats_component.JUMP_VELOCITY
 			character.velocity.x = -character.get_wall_normal().x * stats_component.JUMP_VELOCITY
 		STATE.ABILITY_SLIDE:
+			slide.play()
 			%SlideTimer.start(stats_component.SLIDE_COOLDOWN)
 			character.velocity.x = character.velocity.x * 4
 		STATE.ABILITY_STOMP:
+			stomp.play()
 			%StompTimer.start(stats_component.STOMP_COOLDOWN)
 			character.velocity.x = 0
 		STATE.ABILITY_DASH:
+			dash.play()
 			%DashTimer.start(stats_component.DASH_COOLDOWN)
 			# I want to remove vertical velocity when dashing. When setting velocity.y to 0 it would
 			# sometimes not behave as I intended so I simply lower it for now.

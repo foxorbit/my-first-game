@@ -16,6 +16,9 @@
 [ext_resource type="PackedScene" uid="uid://d2obw3bju00nr" path="res://ui/player_health_bar/player_health_bar.tscn" id="12_len68"]
 [ext_resource type="AudioStream" uid="uid://ds2uayldd2myy" path="res://sounds/jump2.ogg" id="15_lfh2f"]
 [ext_resource type="AudioStream" uid="uid://cefaa7b8gfogp" path="res://sounds/hit2.ogg" id="16_lfh2f"]
+[ext_resource type="AudioStream" uid="uid://cycpps8ryupyy" path="res://sounds/dash2.ogg" id="17_dfhue"]
+[ext_resource type="AudioStream" uid="uid://bcv8sdcb7y8lj" path="res://sounds/slide.ogg" id="18_a1tsl"]
+[ext_resource type="AudioStream" uid="uid://b1sklo5h3oyp7" path="res://sounds/stomp.ogg" id="19_p0egi"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_q3y5j"]
 resource_local_to_scene = true
@@ -286,6 +289,15 @@ stream = ExtResource("15_lfh2f")
 
 [node name="Hit" type="AudioStreamPlayer2D" parent="Sounds" unique_id=1681396058]
 stream = ExtResource("16_lfh2f")
+
+[node name="Dash" type="AudioStreamPlayer2D" parent="Sounds" unique_id=537154644]
+stream = ExtResource("17_dfhue")
+
+[node name="Slide" type="AudioStreamPlayer2D" parent="Sounds" unique_id=340814912]
+stream = ExtResource("18_a1tsl")
+
+[node name="Stomp" type="AudioStreamPlayer2D" parent="Sounds" unique_id=1107158793]
+stream = ExtResource("19_p0egi")
 
 [connection signal="playcritanimation" from="." to="ShaderPlayer" method="_on_player_playcritanimation"]
 [connection signal="change_state" from="Components/MovementComponent" to="Components/InvulnerabilityComponent" method="_on_movement_component_change_state"]
